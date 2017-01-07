@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>blog</display-name>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	
+	<filter>
+		<filter-name>UTF-8</filter-name>
+		<filter-class>com.bob.blog.filter.UTFFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UTF-8</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>usercheck</filter-name>
+		<filter-class>com.bob.blog.filter.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>usercheck</filter-name>
+		<url-pattern>/blog/client/index/*</url-pattern>
+	</filter-mapping>
+	
+
+
+	<servlet>
+		<servlet-name>CheckId</servlet-name>
+		<servlet-class>com.bob.blog.servlet.CheckUserIdValidServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckId</servlet-name>
+		<url-pattern>/servlet/CheckId.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ListTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.ListTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListTalk</servlet-name>
+		<url-pattern>/servlet/ListTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ContentTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.ContentTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ContentTalk</servlet-name>
+		<url-pattern>/servlet/ContentTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.AddTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTalk</servlet-name>
+		<url-pattern>/servlet/AddTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.EditTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditTalk</servlet-name>
+		<url-pattern>/servlet/EditTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.DeleteTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteTalk</servlet-name>
+		<url-pattern>/servlet/DeleteTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateTalk</servlet-name>
+		<servlet-class>com.bob.blog.servlet.UpdateTalk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateTalk</servlet-name>
+		<url-pattern>/servlet/UpdateTalk.servlet</url-pattern>
+	</servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>/client/login.jsp</welcome-file>
+	</welcome-file-list>
+
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/blog</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+</web-app>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+    <struts>
+        <constant name="struts.action.extension" value="do"/>  
+        <package name="blog"  extends="struts-default">
+            
+            <action name="login" class="com.bob.blog.action.LoginAction"  method="login">
+                <result name="success">/client/index/index.jsp</result>
+                <result name="fail">/client/login.jsp</result>
+                <result name="empty">/client/login.jsp</result>
+            </action>
+            
+            <action name="register" class="com.bob.blog.action.RegisterAction"  method="register">
+                <result name="success">/client/register.jsp</result>
+                <result name="fail">/client/register.jsp</result>
+                <result name="empty">/client/register.jsp</result>
+            </action>
+            
+            <action name="upload" class="com.bob.blog.action.UploadImageAction"  method="upload">
+                <result name="success">/client/index/settings.jsp</result>
+                <result name="fail">/client/index/settings.jsp</result>
+                <result name="empty">/client/index/settings.jsp</result>
+            </action>
+            
+            <action name="logout" class="com.bob.blog.action.LogoutAction"  method="logout">
+                <result name="success">/client/login.jsp</result>
+                <result name="fail">/client/login.jsp</result>
+            </action>
+            
+        </package>
+    </struts>
